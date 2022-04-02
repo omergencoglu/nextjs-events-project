@@ -1,16 +1,14 @@
-import EventList from "../components/events/event-list";
 import { getFeaturedEvents } from "../dummy-data";
-import EventsSearch from "../components/events/events-search";
-import { Fragment } from "react/cjs/react.production.min";
+import EventList from "../components/events/event-list";
 
-function Home() {
+function HomePage() {
   const featuredEvents = getFeaturedEvents();
+
   return (
-    <Fragment>
-      <EventsSearch />
+    <div>
       <EventList items={featuredEvents} />
-    </Fragment>
+    </div>
   );
 }
 
-export default Home;
+export default HomePage;
