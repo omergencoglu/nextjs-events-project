@@ -1,8 +1,19 @@
 export async function getAllEvents() {
   const response = await fetch(process.env.DATABASE);
   const data = await response.json();
+
+  const events = [];
+
+  for (let key in data) {
+    events.push({
+      id: key,
+      ...data[key],
+    });
+  }
+  return events;
 }
 
 export async function getFeaturedEvents() {
-  return DUMMY_EVENTS.filter((event) => event.isFeatured);
+  const allEvents = await getAllEvents();
+  return allEvents.filter((event) => event.isFeatured);
 }
